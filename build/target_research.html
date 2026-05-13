@@ -1,141 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<div style="white-space: pre;>
-<p> From: Tanner Davis
-Date: 4/14/2026
-Subject: Threat Assessment of Persistent Adversary 
-Executive Summary
-The cybersecurity threat landscape is undergoing a significant transformation driven by highly adaptive, socially adept adversaries. Among the most concerning of these actors is Persistent Adversary, a sophisticated cybercriminal group that has rapidly evolved from traditional phishing operations into complex, multi-stage ransomware and extortion campaigns. Their demonstrated ability to exploit human trust, identity systems, and cloud-native infrastructure presents a material risk to organizations operating in hybrid and remote environments.
-This six-pager provides a comprehensive assessment of the advanced persistent threat group, APT, Persistent Adversary, including their objectives, tactics, techniques, and procedures (TTPs), current industry impacts, and actionable recommendations for detection, mitigation, and long-term resilience. The analysis underscores that traditional perimeter-based defenses are insufficient against this class of adversary and that executive attention is required to strengthen identity governance, behavioral analytics, and organizational processes.
-Threat Overview
-Persistent Adversary is known for advanced social engineering techniques, particularly impersonation of internal IT and help-desk personnel. A report from Cyber Security Intelligence states, “This resurgence involves a structured operational model with specialized roles, including social-engineering experts, intrusion operators, credential brokers, insider-recruitment facilitators, and data-leak amplifiers.” (CSI, 2026) There are many specialized skills required to coordinate a successful breach on a large-scale organization. The group frequently acquires employee phone numbers and uses convincing voice-based attacks to manipulate staff by resetting credentials, enrolling attacker-controlled multi-factor authentication (MFA) devices, or granting elevated access.
-Active since at least 2022, the group initially focused on customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications organizations. By 2023, their targeting expanded significantly to include gaming, hospitality, retail, managed service providers (MSPs), manufacturing, and financial services. High-profile incidents affecting globally recognized brands illustrate both their ambition and capability.
-Their recent transition toward hypervisor-level compromises and the deployment of new ransomware variants represents a notable escalation in technical sophistication and operational impact. These developments demand immediate and sustained attention from senior leadership and security professionals.
-
-Threat Actor Profile, Motivations, and Objectives
-Persistent Adversary is believed to consist primarily of young, English-speaking individuals operating across the United Kingdom, United States, and Canada. The blog Talos has reported they, “use their advanced knowledge of Western civilization to provide crucial details to Russian actors.” (Talos, 2024). The group is also tracked under several alternative identifiers.
-The group is primarily financially motivated, demonstrating little regard for legal consequences. Their preferred targets include high-revenue organizations such as casinos, hospitality chains, entertainment companies, and technology providers. These sectors offer both valuable data and high operational pressure, increasing the likelihood of ransom payment.
-Persistent Adversary’s objectives include: - Rapid monetization through ransomware and data extortion - Persistent access to enterprise identity and cloud platforms - Expansion of influence through demonstrated success and imitation by other threat actors
-The potential impact of successful attacks includes prolonged operational disruption, regulatory exposure, reputational damage, and significant financial loss.
-Tactics, Techniques, and Procedures (TTPs)
- 
-
- 
-
-Persistent Adversary relies heavily on living-off-the-land techniques that blend malicious activity with legitimate administrative actions. Their core TTPs align with multiple stages of the MITRE ATT&CK framework and include:
-Phishing for information through social engineering via phone-based impersonation of IT staff. Persistent Adversary imitates problems to learn more about how their target responds to technical issues. This leads to compromising MFA bypass through help-desk manipulation.
-Once the group has valid accounts, they can be used to tunnel into cloud platforms including AWS and Office 365. With a combination of account credentials and access to applications it becomes difficult to prevent escalation.
-Email collection and alteration help evasion of endpoint detection and response (EDR) tooling. After the group has established footing within the organization, they implement ingress tool transfer.
-Hypervisor and virtualization infrastructure attacks. CrowdStrike has noted, “Installed legitimate protocol-tunneling and proxy tools on VMware vCenter and adversary-controlled VMs,” (CrowdStrike, 2025) using tools that a company already implements make it easier to blend into normal traffic.
-Their operational success is rooted in exploiting weaknesses in identity workflows rather than software vulnerabilities alone.
- 
-Current Industry Situation and Defensive Gaps
-The broader cybersecurity industry has begun to recognize the implications of Persistent Adversary’s methods. Their influence is already evident, with other cybercriminal groups adopting similar social engineering-centric strategies. This highlights the reality that the weakest link in information security is often organizational process.
-Organizations must acknowledge that legacy perimeter-based security models are inadequate. The future of information security will require security architectures that assume compromise rather than attempting to prevent all intrusions.
-Detection Engineering and Indicators of Compromise
-Effective detection of Persistent Adversary activity requires behavioral analytics capable of identifying subtle anomalies associated with legitimate tool misuse. Security operations teams should prioritize user and entity behavior analytics (UEBA) and enhanced monitoring of administrative activity.
-While indicators may change rapidly, known examples include: - Ransomware hash: DragonForce (SHA-256) 250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b - Social engineering domains following the pattern: {organization-name}-helpdesk[.]com - IP addresses associated with data exfiltration, MFA manipulation, and unauthorized cloud access
-These indicators should be integrated into detection pipelines alongside heuristic and behavioral signatures rather than relied upon exclusively.
-Mitigation and Remediation Recommendations
-Identity and Access Management Hardening
-Organizations should mandate phishing-resistant MFA using FIDO2/WebAuthn or PKI-based solutions across all critical systems. Protections defined by the Cybersecurity and Infrastructure Security Agency, “These MFA implementations are resistant to phishing and not susceptible to push bombing or SIM swap attacks,” (CISA, 2025) since FIDO2 enables security. WebAuthn is passwordless authentication using public key cryptography, with a mobile device. Conditional access policies must incorporate device compliance, geographic location, and behavioral risk signals. Privileged access should be continuously audited with automated alerting for changes.
-Help Desk Security Enhancements
-Enhanced identity verification procedures are essential for password resets and account modifications. Help-desk personnel must receive targeted training on advanced social engineering tactics, including voice-based attacks, urgency cues, and behavioral anomalies during calls.
-Virtualization and Infrastructure Security
-Virtualization environments require strict segmentation and hardened baselines. It is recommended to, “Enforce local firewall rules to block inbound SMB, RDP, WinRM, Powershell, & WMI.” Directly from Mandiant (Google, 2025). Firewalls are simple yet effective tools that deter the most common attacks. Firewalls enhance intrusion detection by setting basic rules that must be adhered to when using a network. Administrative access should be restricted to dedicated workstations, SSH disabled by default, and certificate-based authentication enforced. Continuous monitoring for configuration changes is critical.
-Cloud Security Enhancements
-Recommended actions include deployment of cloud security posture management (CSPM) tools, regular audits of storage permissions, data loss prevention (DLP) controls, and monitoring for anomalous query and data exfiltration patterns.
-Detection and Response Capabilities
-EDR and network monitoring solutions must be configured to detect legitimate tools operating in unusual contexts. Behavioral analytics should be central to the detection strategy, supported by rapid response playbooks.
-Call to Action and Next Steps
-Remote work models and cloud platforms have permanently expanded organizational attack surfaces. Leadership must recognize that these environments require new security approaches grounded in identity assurance and continuous monitoring.
-Immediate next steps include: 1. Establishing secure VPN tunnels for administrative access 2. Conducting recurring employee training focused on social engineering resistance 3. Encrypting sensitive data across all environments 4. Reinforcing training through regular repetition and testing 5. Implementing mechanisms to reduce employee phone number exposure, including automated number rotation 6. Continuously reassessing and improving human-centric security controls
-Conclusion
-Persistent Adversary represents a defining example of the next generation of cyber threats—adaptive, human-focused, and operationally disruptive. Addressing this risk requires executive sponsorship, cultural change, and sustained investment in identity-centric security strategies. Failure to act exposes the organization to significant and foreseeable harm.
-Persistent Adversary shows that young individuals are finding an interest in the incentives of information security. There is a risk and return associated with learning the fundamentals of organizational systems. Artificial intelligence, ai, is as much a handicap as it is a threat. When it is in the wrong hands it can be used to do a lot of the work involved in an attack. This is a concern for the future of security professionals. The advantage leans towards the script kiddie that can leverage the wide array of possibilities that ai opens.
-It is easy to introduce the idea that a business is vulnerable. There are many ways to train employees in how to protect themselves against malicious activity. Security operation centers can work around the clock to reinforce protection measurements. The conclusion however is that rather than focus on proactive steps to prevent all attacks, we need to assume that our company has already been compromised. 
-
-•	Appendix: Include detailed IOCs, detection signatures, and additional TTP details in the appendix.
-File hashes; “DragonForce (SHA256): [1]250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b” 
-DragonForce (SHA1): e164bbaf848fa5d46fa42f62402a1c55330ef562 MD5: d54bae930b038950c2947f5397c13f84
-Domains; “{targetsname}-helpdesk[.]com”, targetsname-cms[.]com, oktalogin-targetcompany[.]com,
-Tool Install; AnyDesk, TeamViewer, ScreenConnect, TacticalRMM, Splashtop, chisel, MobaXterm, ngrok, Pinggy, Rsocx, and Teleport
-Malware Artifact; Winupdate.exe (Go-based), FileSeek.exe
-IP addr; “136.144.43.[81], 144.76.136.[153] (associated w/ transfer.sh used for data exfil), 173.239.204.[129] (adversary MFA registration), 18.206.107.[24]/29 (adversary added CIDR range as an AWS security group to allow inbound traffic)
-rule Malware_Example
-{
-   meta:
-       description = "Detects Persistent Adversary"
-       author = "Tanner Davis"
-       date = "2024-20-04"
-   strings:
-$a = { 6B 32 C8 60 07 30 00 6A 14 8D 91 }
-	$h = “e164bbaf848fa5d46fa42f62402a1c55330ef562 MD5: d54bae930b038950c2947f5397c13f84”
-$h = "[1]250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b "
-$i = 144.76.136.[153]
-	$i = 136.144.43.[81]
-   condition:
-       any of ($a, $b, $c)
-}
-o	TTPs: Include a full list of TTPs in the MITRE ATT&CK format.
-Enterprise	T1583
-.001
-Acquire Infrastructure: Domains
-Persistent Adversary has registered domains to spoof legitimate corporate login portals.[10]
-
-Enterprise	T1217
-Browser Information Discovery
-Persistent Adversary retrieves browser histories via infostealer malware such as Raccoon Stealer.[3]
-
-Enterprise	T1580
-Cloud Infrastructure Discovery
-Persistent Adversary enumerates cloud environments including Amazon Web Services (AWS) S3 buckets to identify server and backup management infrastructure, resource access, databases and storage containers .[2][6][9]
-
-Enterprise	T1538
-Cloud Service Dashboard
-Persistent Adversary abused AWS Systems Manager Inventory to identify targets on the compromised network prior to lateral movement.[3]
-
-Enterprise	T1059
-.001
-Command and Scripting Interpreter: PowerShell
-Persistent Adversary has used the PowerShell cmdlet Get-ADUser.[9]
-
-		.004
-Command and Scripting Interpreter: Unix Shell
-Persistent Adversary has used the command shell to upload and install the Teleport remote access tool to a compromised vCenter Server Appliance.[8]
-
-Enterprise	T1136
-Create Account
-Persistent Adversary creates new user identities within the compromised organization.[3]
-
-Enterprise	T1543
-.002
-Create or Modify System Process: Systemd Service
-Persistent Adversary has run SYSTEMD_UNIT_PATH="/lib/systemd/system/teleport.service to establish persistence for the Teleport remote access tool.[8]
-
-Enterprise	T1555
-.005
-Credentials from Password Stores: Password Managers
-Persistent Adversary has searched for credentials in password vaults and Privileged Access Management (PAM) solutions including HashiCorp Vault.[6][8]
-
-Enterprise	T1486
-Data Encrypted for Impact
-Persistent Adversary has used BlackCat and DragonForce ransomware to encrypt files including on VMWare ESXi servers.[3][2][9][8][10]
-
-Enterprise	T1530
-Data from Cloud Storage
-Persistent Adversary enumerates data stored in cloud resources for collection and exfiltration purposes.[3]
-During C0027, Persistent Adversary accessed victim OneDrive environments to search for VPN and MFA enrollment information, help desk instructions, and new hire guides.[5]
-
-Enterprise	T1213
-.002
-Data from Information Repositories: Sharepoint
-During C0027, Persistent Adversary accessed victim SharePoint environments to search for VPN and MFA enrollment information, help desk instructions, and new hire guides.[5]
-
-		.003
-Data from Information Repositories: Code Repositories
-Persistent Adversary enumerates data stored within victim code repositories, such as internal GitHub repositories.[3][2]
-
-</p>
-</div>
+<body style="margin:0; font-family:Arial, sans-serif; background: #f5f5f5;">
+	<div style="
+		white-space: pre;
+		margin:60px auto;
+		background:white;
+		padding:30px;
+		border-radius:12px;
+		box-shadow:0 4px 20px rgba(0,0,0,0.1);
+	">
+		<h1 style="text-align:center;color #333;"> From: Tanner Davis
+		Date: 4/14/2026
+		Subject: Threat Assessment of Persistent Adversary 
+		Executive Summary
+		</h1>
+		<p style="line-height:1.6; color:#444;">
+		The cybersecurity threat landscape is undergoing a significant transformation driven by highly adaptive, socially adept adversaries. Among the most concerning of these actors is Persistent Adversary, a sophisticated cybercriminal group that has rapidly evolved from traditional phishing operations into complex, multi-stage ransomware and extortion campaigns. Their demonstrated ability to exploit human trust, identity systems, and cloud-native infrastructure presents a material risk to organizations operating in hybrid and remote environments.
+		This six-pager provides a comprehensive assessment of the advanced persistent threat group, APT, Persistent Adversary, including their objectives, tactics, techniques, and procedures (TTPs), current industry impacts, and actionable recommendations for detection, mitigation, and long-term resilience. The analysis underscores that traditional perimeter-based defenses are insufficient against this class of adversary and that executive attention is required to strengthen identity governance, behavioral analytics, and organizational processes.
+		Threat Overview
+		Persistent Adversary is known for advanced social engineering techniques, particularly impersonation of internal IT and help-desk personnel. A report from Cyber Security Intelligence states, “This resurgence involves a structured operational model with specialized roles, including social-engineering experts, intrusion operators, credential brokers, insider-recruitment facilitators, and data-leak amplifiers.” (CSI, 2026) There are many specialized skills required to coordinate a successful breach on a large-scale organization. The group frequently acquires employee phone numbers and uses convincing voice-based attacks to manipulate staff by resetting credentials, enrolling attacker-controlled multi-factor authentication (MFA) devices, or granting elevated access.
+		Active since at least 2022, the group initially focused on customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications organizations. By 2023, their targeting expanded significantly to include gaming, hospitality, retail, managed service providers (MSPs), manufacturing, and financial services. High-profile incidents affecting globally recognized brands illustrate both their ambition and capability.
+		Their recent transition toward hypervisor-level compromises and the deployment of new ransomware variants represents a notable escalation in technical sophistication and operational impact. These developments demand immediate and sustained attention from senior leadership and security professionals.
+		
+		Threat Actor Profile, Motivations, and Objectives
+		Persistent Adversary is believed to consist primarily of young, English-speaking individuals operating across the United Kingdom, United States, and Canada. The blog Talos has reported they, “use their advanced knowledge of Western civilization to provide crucial details to Russian actors.” (Talos, 2024). The group is also tracked under several alternative identifiers.
+		The group is primarily financially motivated, demonstrating little regard for legal consequences. Their preferred targets include high-revenue organizations such as casinos, hospitality chains, entertainment companies, and technology providers. These sectors offer both valuable data and high operational pressure, increasing the likelihood of ransom payment.
+		Persistent Adversary’s objectives include: - Rapid monetization through ransomware and data extortion - Persistent access to enterprise identity and cloud platforms - Expansion of influence through demonstrated success and imitation by other threat actors
+		The potential impact of successful attacks includes prolonged operational disruption, regulatory exposure, reputational damage, and significant financial loss.
+		Tactics, Techniques, and Procedures (TTPs)
+		 
+		
+		 
+		
+		Persistent Adversary relies heavily on living-off-the-land techniques that blend malicious activity with legitimate administrative actions. Their core TTPs align with multiple stages of the MITRE ATT&CK framework and include:
+		Phishing for information through social engineering via phone-based impersonation of IT staff. Persistent Adversary imitates problems to learn more about how their target responds to technical issues. This leads to compromising MFA bypass through help-desk manipulation.
+		Once the group has valid accounts, they can be used to tunnel into cloud platforms including AWS and Office 365. With a combination of account credentials and access to applications it becomes difficult to prevent escalation.
+		Email collection and alteration help evasion of endpoint detection and response (EDR) tooling. After the group has established footing within the organization, they implement ingress tool transfer.
+		Hypervisor and virtualization infrastructure attacks. CrowdStrike has noted, “Installed legitimate protocol-tunneling and proxy tools on VMware vCenter and adversary-controlled VMs,” (CrowdStrike, 2025) using tools that a company already implements make it easier to blend into normal traffic.
+		Their operational success is rooted in exploiting weaknesses in identity workflows rather than software vulnerabilities alone.
+		 
+		Current Industry Situation and Defensive Gaps
+		The broader cybersecurity industry has begun to recognize the implications of Persistent Adversary’s methods. Their influence is already evident, with other cybercriminal groups adopting similar social engineering-centric strategies. This highlights the reality that the weakest link in information security is often organizational process.
+		Organizations must acknowledge that legacy perimeter-based security models are inadequate. The future of information security will require security architectures that assume compromise rather than attempting to prevent all intrusions.
+		Detection Engineering and Indicators of Compromise
+		Effective detection of Persistent Adversary activity requires behavioral analytics capable of identifying subtle anomalies associated with legitimate tool misuse. Security operations teams should prioritize user and entity behavior analytics (UEBA) and enhanced monitoring of administrative activity.
+		While indicators may change rapidly, known examples include: - Ransomware hash: DragonForce (SHA-256) 250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b - Social engineering domains following the pattern: {organization-name}-helpdesk[.]com - IP addresses associated with data exfiltration, MFA manipulation, and unauthorized cloud access
+		These indicators should be integrated into detection pipelines alongside heuristic and behavioral signatures rather than relied upon exclusively.
+		Mitigation and Remediation Recommendations
+		Identity and Access Management Hardening
+		Organizations should mandate phishing-resistant MFA using FIDO2/WebAuthn or PKI-based solutions across all critical systems. Protections defined by the Cybersecurity and Infrastructure Security Agency, “These MFA implementations are resistant to phishing and not susceptible to push bombing or SIM swap attacks,” (CISA, 2025) since FIDO2 enables security. WebAuthn is passwordless authentication using public key cryptography, with a mobile device. Conditional access policies must incorporate device compliance, geographic location, and behavioral risk signals. Privileged access should be continuously audited with automated alerting for changes.
+		Help Desk Security Enhancements
+		Enhanced identity verification procedures are essential for password resets and account modifications. Help-desk personnel must receive targeted training on advanced social engineering tactics, including voice-based attacks, urgency cues, and behavioral anomalies during calls.
+		Virtualization and Infrastructure Security
+		Virtualization environments require strict segmentation and hardened baselines. It is recommended to, “Enforce local firewall rules to block inbound SMB, RDP, WinRM, Powershell, & WMI.” Directly from Mandiant (Google, 2025). Firewalls are simple yet effective tools that deter the most common attacks. Firewalls enhance intrusion detection by setting basic rules that must be adhered to when using a network. Administrative access should be restricted to dedicated workstations, SSH disabled by default, and certificate-based authentication enforced. Continuous monitoring for configuration changes is critical.
+		Cloud Security Enhancements
+		Recommended actions include deployment of cloud security posture management (CSPM) tools, regular audits of storage permissions, data loss prevention (DLP) controls, and monitoring for anomalous query and data exfiltration patterns.
+		Detection and Response Capabilities
+		EDR and network monitoring solutions must be configured to detect legitimate tools operating in unusual contexts. Behavioral analytics should be central to the detection strategy, supported by rapid response playbooks.
+		Call to Action and Next Steps
+		Remote work models and cloud platforms have permanently expanded organizational attack surfaces. Leadership must recognize that these environments require new security approaches grounded in identity assurance and continuous monitoring.
+		Immediate next steps include: 1. Establishing secure VPN tunnels for administrative access 2. Conducting recurring employee training focused on social engineering resistance 3. Encrypting sensitive data across all environments 4. Reinforcing training through regular repetition and testing 5. Implementing mechanisms to reduce employee phone number exposure, including automated number rotation 6. Continuously reassessing and improving human-centric security controls
+		Conclusion
+		Persistent Adversary represents a defining example of the next generation of cyber threats—adaptive, human-focused, and operationally disruptive. Addressing this risk requires executive sponsorship, cultural change, and sustained investment in identity-centric security strategies. Failure to act exposes the organization to significant and foreseeable harm.
+		Persistent Adversary shows that young individuals are finding an interest in the incentives of information security. There is a risk and return associated with learning the fundamentals of organizational systems. Artificial intelligence, ai, is as much a handicap as it is a threat. When it is in the wrong hands it can be used to do a lot of the work involved in an attack. This is a concern for the future of security professionals. The advantage leans towards the script kiddie that can leverage the wide array of possibilities that ai opens.
+		It is easy to introduce the idea that a business is vulnerable. There are many ways to train employees in how to protect themselves against malicious activity. Security operation centers can work around the clock to reinforce protection measurements. The conclusion however is that rather than focus on proactive steps to prevent all attacks, we need to assume that our company has already been compromised. 
+		
+		•	Appendix: Include detailed IOCs, detection signatures, and additional TTP details in the appendix.
+		File hashes; “DragonForce (SHA256): [1]250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b” 
+		DragonForce (SHA1): e164bbaf848fa5d46fa42f62402a1c55330ef562 MD5: d54bae930b038950c2947f5397c13f84
+		Domains; “{targetsname}-helpdesk[.]com”, targetsname-cms[.]com, oktalogin-targetcompany[.]com,
+		Tool Install; AnyDesk, TeamViewer, ScreenConnect, TacticalRMM, Splashtop, chisel, MobaXterm, ngrok, Pinggy, Rsocx, and Teleport
+		Malware Artifact; Winupdate.exe (Go-based), FileSeek.exe
+		IP addr; “136.144.43.[81], 144.76.136.[153] (associated w/ transfer.sh used for data exfil), 173.239.204.[129] (adversary MFA registration), 18.206.107.[24]/29 (adversary added CIDR range as an AWS security group to allow inbound traffic)
+		rule Malware_Example
+		{
+		   meta:
+		       description = "Detects Persistent Adversary"
+		       author = "Tanner Davis"
+		       date = "2024-20-04"
+		   strings:
+		$a = { 6B 32 C8 60 07 30 00 6A 14 8D 91 }
+			$h = “e164bbaf848fa5d46fa42f62402a1c55330ef562 MD5: d54bae930b038950c2947f5397c13f84”
+		$h = "[1]250ba6f25fd60077f698a2617c15f89d58c1867339bfd9ee8ab19ce9943304b "
+		$i = 144.76.136.[153]
+			$i = 136.144.43.[81]
+		   condition:
+		       any of ($a, $b, $c)
+		}
+		o	TTPs: Include a full list of TTPs in the MITRE ATT&CK format.
+		Enterprise	T1583
+		.001
+		Acquire Infrastructure: Domains
+		Persistent Adversary has registered domains to spoof legitimate corporate login portals.[10]
+		
+		Enterprise	T1217
+		Browser Information Discovery
+		Persistent Adversary retrieves browser histories via infostealer malware such as Raccoon Stealer.[3]
+		
+		Enterprise	T1580
+		Cloud Infrastructure Discovery
+		Persistent Adversary enumerates cloud environments including Amazon Web Services (AWS) S3 buckets to identify server and backup management infrastructure, resource access, databases and storage containers .[2][6][9]
+		
+		Enterprise	T1538
+		Cloud Service Dashboard
+		Persistent Adversary abused AWS Systems Manager Inventory to identify targets on the compromised network prior to lateral movement.[3]
+		
+		Enterprise	T1059
+		.001
+		Command and Scripting Interpreter: PowerShell
+		Persistent Adversary has used the PowerShell cmdlet Get-ADUser.[9]
+		
+				.004
+		Command and Scripting Interpreter: Unix Shell
+		Persistent Adversary has used the command shell to upload and install the Teleport remote access tool to a compromised vCenter Server Appliance.[8]
+		
+		Enterprise	T1136
+		Create Account
+		Persistent Adversary creates new user identities within the compromised organization.[3]
+		
+		Enterprise	T1543
+		.002
+		Create or Modify System Process: Systemd Service
+		Persistent Adversary has run SYSTEMD_UNIT_PATH="/lib/systemd/system/teleport.service to establish persistence for the Teleport remote access tool.[8]
+		
+		Enterprise	T1555
+		.005
+		Credentials from Password Stores: Password Managers
+		Persistent Adversary has searched for credentials in password vaults and Privileged Access Management (PAM) solutions including HashiCorp Vault.[6][8]
+		
+		Enterprise	T1486
+		Data Encrypted for Impact
+		Persistent Adversary has used BlackCat and DragonForce ransomware to encrypt files including on VMWare ESXi servers.[3][2][9][8][10]
+		
+		Enterprise	T1530
+		Data from Cloud Storage
+		Persistent Adversary enumerates data stored in cloud resources for collection and exfiltration purposes.[3]
+		During C0027, Persistent Adversary accessed victim OneDrive environments to search for VPN and MFA enrollment information, help desk instructions, and new hire guides.[5]
+		
+		Enterprise	T1213
+		.002
+		Data from Information Repositories: Sharepoint
+		During C0027, Persistent Adversary accessed victim SharePoint environments to search for VPN and MFA enrollment information, help desk instructions, and new hire guides.[5]
+		
+				.003
+		Data from Information Repositories: Code Repositories
+		Persistent Adversary enumerates data stored within victim code repositories, such as internal GitHub repositories.[3][2]
+		
+		</p>
+	</div>
+</body>
 </html>
